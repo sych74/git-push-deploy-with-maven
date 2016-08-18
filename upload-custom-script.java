@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collection;
+import java.util.HashMap;
+import com.hivext.api.Response;
 import com.hivext.api.server.development.response.ApplicationInfoResponse;
 import com.hivext.api.utils.Random;
 
@@ -57,4 +59,12 @@ String token = Random.getPswd(64);
 String scriptBody = out.toString("UTF-8").replace("${TOKEN}", token);
 
 //creating a new script 
-return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
+Response response = hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
+if (!response.isOK()) return response;
+
+//get scripting domain
+String domain = hivext.dev.apps.GetApp(getParam("appid")).getHosting().get("domain").toString();
+HashMap resp = new HashMap();
+resp.put("domain", domain);
+resp.put("result", 0);
+return resp;
