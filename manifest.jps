@@ -28,7 +28,7 @@
         "id": "upload-deploy-script",
         "onCall": {
           "execScript": {
-            "type": "java",
+            "type": "js",
             "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.cs",
             "params": {
               "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.cs",
