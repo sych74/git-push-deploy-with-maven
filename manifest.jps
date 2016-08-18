@@ -45,8 +45,8 @@
           "execCmd": {
             "nodeType": "maven3",
             "commands": [
-              "echo '${event.response.token}' >> /var/log/test.log",
-              "echo 'http://${event.response.domain}/redeploy' >> /var/log/test.log"
+              "echo '${${event.params.token}' >> /var/log/test.log",
+              "echo 'http://${${event.params.domain}/redeploy' >> /var/log/test.log"
             ],
             "user": "root"
           }
