@@ -1,3 +1,4 @@
+//@auth
 //@required('url', 'scriptName', 'scriptType')
 
 import java.io.ByteArrayOutputStream;
