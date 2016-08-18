@@ -20,10 +20,7 @@
     },
     "onInstall": [
       {
-        "call": [
-          "upload-deploy-script",
-          "set-redeploy-url"
-        ]
+        "call": "upload-deploy-script"
       }
     ],
     "procedures": [
@@ -32,17 +29,18 @@
         "onCall": {
           "execScript": {
             "type": "java",
-            "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java?1",
+            "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java?2",
             "params": {
               "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.js",
               "scriptName": "redeploy",
-              "scriptType": "js"
+              "scriptType": "js",
+              "next": "set-redeploy-call"
             }
           }
         }
       },
       {
-        "id": "set-redeploy-url",
+        "id": "set-redeploy-call",
         "onCall": {
           "execCmd": {
             "nodeType": "maven3",
