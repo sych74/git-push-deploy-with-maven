@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Collection;
 import com.hivext.api.server.development.response.ApplicationInfoResponse;
+import com.hivext.api.utils.Random;
 
 
 //reading script from URL
@@ -51,5 +52,9 @@ try {
 
 }
 
+//inject token
+String token = Random.getPswd(64);
+String scriptBody = out.toString("UTF-8").replace("${TOKEN}", token);
+
 //creating a new script 
-return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
+return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
