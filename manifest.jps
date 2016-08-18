@@ -1,0 +1,40 @@
+{
+  "jpsType": "install",
+  "jpsVersion": "0.6",
+  "application": {
+    "name": "Git-Push-Deploy with Maven Build Node",
+    "homepage": "https://github.com/jelastic-jps/git-push-deploy-with-maven",
+    "description": "Example of continuous integration (CI) pipeline for Java Microservice",
+    "env": {
+      "topology": {
+        "_nodes": [
+          {
+            "count": 1,
+            "cloudlets": 16,
+            "nodeGroup": "cp",
+            "nodeType": "tomcat8"
+          }
+        ],
+        "engine": "java8"
+      }
+    },
+    "onInstall": [
+      {
+        "execScript": [
+          {
+            "type": "js",
+            "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.cs",
+            "params": {
+              "url": "https://github.com/jelastic-jps/get-push-deploy-with-maven/blob/master/redeploy.cs",
+              "scriptName": "redeploy", 
+              "scriptType: "java"
+            }
+          }
+        ]
+      },
+      {
+        "log": "installed successfully"
+      }
+    ]
+  }
+}
