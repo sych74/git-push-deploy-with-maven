@@ -23,6 +23,10 @@ var domain = jelastic.dev.apps.GetApp(appid).hosting.domain;
 
 return {
     result: 0,
+    params : {
+                domain : domain,
+                token : token
+            },
     onAfterReturn : {
         call : {
             procedure : next,
