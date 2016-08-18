@@ -1,5 +1,5 @@
 {
-  "jpsType": "install",
+  "jpsType": "update",
   "jpsVersion": "0.6",
   "application": {
     "name": "Git-Push-Deploy with Maven Build Node",
