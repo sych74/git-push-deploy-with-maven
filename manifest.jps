@@ -46,7 +46,7 @@
             "nodeType": "maven3",
             "commands": [
               "echo '${${event.params.token}' >> /var/log/test.log",
-              "echo 'http://${${event.params.domain}/redeploy' >> /var/log/test.log"
+              "echo 'http://${event.params.domain}/redeploy' >> /var/log/test.log"
             ],
             "user": "root"
           }
