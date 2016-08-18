@@ -8,12 +8,7 @@
     "env": {
       "topology": {
         "nodes": [
-          {
-            "count": 1,
-            "cloudlets": 16,
-            "nodeGroup": "cp",
-            "nodeType": "tomcat8"
-          }
+        
         ],
         "engine": "java8"
       }
