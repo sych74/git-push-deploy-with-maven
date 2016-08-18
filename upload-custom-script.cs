@@ -1,4 +1,5 @@
 //@required('url', 'scriptName', 'scriptType')
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,6 +8,8 @@ import java.net.URL;
 import java.util.Collection;
 import com.hivext.api.server.development.response.ApplicationInfoResponse;
 
+
+//reading script from URL
 int READ_TIMEOUT = 30 * 1000;
 int CONNECT_TIMEOUT = 10 * 1000;
 int BUFFER_SIZE = 2048;
@@ -49,7 +52,7 @@ try {
 
 }
 
-
+//getting appid of application for custom scripts  
 String targetAppid = null;
 Collection <ApplicationInfoResponse> apps = hivext.dev.apps.GetApps().getApps();
 for (ApplicationInfoResponse app: apps) {
@@ -59,4 +62,5 @@ for (ApplicationInfoResponse app: apps) {
     }
 }
 
+//creating a new script 
 return hivext.dev.scripting.CreateScript(targetAppid, session, getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
