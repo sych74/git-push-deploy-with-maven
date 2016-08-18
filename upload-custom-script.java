@@ -58,6 +58,9 @@ try {
 String token = Random.getPswd(64);
 String scriptBody = out.toString("UTF-8").replace("${TOKEN}", token);
 
+//delete the script if it already exists
+hivext.dev.scripting.DeleteScript(getParam("scriptName"));
+
 //creating a new script 
 Response createResp = hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
 if (!createResp.isOK()) return createResp;
