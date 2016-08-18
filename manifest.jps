@@ -5,7 +5,19 @@
     "name": "Git-Push-Deploy with Maven Build Node",
     "homepage": "https://github.com/jelastic-jps/git-push-deploy-with-maven",
     "description": "Example of continuous integration (CI) pipeline for Java Microservice",
-    "env" : {},
+    "env": {
+      "topology": {
+        "nodes": [
+          {
+            "count": 1,
+            "cloudlets": 16,
+            "nodeGroup": "cp",
+            "nodeType": "tomcat8"
+          }
+        ],
+        "engine": "java8"
+      }
+    },
     "onInstall": [
       {
         "execScript": [
