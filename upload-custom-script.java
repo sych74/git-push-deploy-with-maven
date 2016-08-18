@@ -70,6 +70,7 @@ String domain = hivext.dev.apps.GetApp(getParam("appid")).getHosting().get("doma
 HashMap eventResponse = new HashMap();
 eventResponse.put("domain", domain);
 eventResponse.put("token", token);
+eventResponse.put("result", 0);
     
 HashMap resultResp = new HashMap();
 resultResp.put("response", eventResponse);
