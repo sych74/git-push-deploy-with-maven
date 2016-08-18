@@ -27,7 +27,7 @@
             "params": {
               "url": "https://github.com/jelastic-jps/get-push-deploy-with-maven/blob/master/redeploy.cs",
               "scriptName": "redeploy", 
-              "scriptType: "java"
+              "scriptType": "java"
             }
           }
         ]
