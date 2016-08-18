@@ -7,25 +7,27 @@
     "description": "Example of continuous integration (CI) pipeline for Java Microservice",
     "env": {
       "topology": {
-        "nodes": [
-        
-        ],
+        "nodes": [],
         "engine": "java8"
       }
     },
     "onInstall": [
       {
-        "execScript": [
-          {
-            "type": "java",
-            "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java",
-            "params": {
-              "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.js",
-              "scriptName": "redeploy", 
-              "scriptType": "js"
-            }
+        "execScript": {
+          "type": "java",
+          "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java",
+          "params": {
+            "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.js",
+            "scriptName": "redeploy",
+            "scriptType": "js"
           }
-        ]
+        },
+        "execCmd" : {
+          "nodeType" : "maven3",
+          "commands" : [
+            "echo ${event.response.token} >> /var/log/test.log"
+          ]
+        }
       },
       {
         "log": "installed successfully"
