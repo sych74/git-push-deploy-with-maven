@@ -53,16 +53,5 @@ try {
 
 }
 
-//getting appid of application for custom scripts  
-String targetAppid = null;
-Collection <ApplicationInfoResponse> apps = hivext.dev.apps.GetApps().getApps();
-for (ApplicationInfoResponse app: apps) {
-    if (app.getName() == "Custom Scripting") {
-        targetAppid = app.getAppid();
-        break;
-    }
-}
-
 //creating a new script 
-//return getParam("user") + " : " + getParam("session") + "  : " + getParam("signature") + " : " + getParam("targetAppid") + " : " + getParam("appid");
-hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
+return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
