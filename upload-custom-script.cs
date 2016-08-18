@@ -15,7 +15,7 @@ jelastic.dev.scripting.DeleteScript(scriptName);
 
 //creating a new script 
 var resp = hivext.dev.scripting.CreateScript(scriptName, scriptType, scriptBody);
-if (!resp.isOK()) return resp;
+if (!resp.result) return resp;
 
 //get scripting domain
 var domain = jelastic.dev.apps.GetApp(appid).hosting.domain;
