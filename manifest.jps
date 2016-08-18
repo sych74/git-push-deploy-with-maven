@@ -1,5 +1,5 @@
 {
-  "jpsType": "update",
+  "jpsType": "install",
   "jpsVersion": "0.6",
   "application": {
     "name": "Git-Push-Deploy with Maven Build Node",
@@ -7,8 +7,15 @@
     "description": "Example of continuous integration (CI) pipeline for Java Microservice",
     "env": {
       "topology": {
-        "nodes": [],
-        "engine": "java8"
+        "nodes": [
+          {
+            "count": 1,
+            "cloudlets": 16,
+            "nodeGroup": "build",
+            "nodeType": "maven3"
+          }
+        ],
+        "engine": "java7"
       }
     },
     "onInstall": [
