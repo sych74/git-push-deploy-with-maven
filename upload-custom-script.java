@@ -59,12 +59,17 @@ String token = Random.getPswd(64);
 String scriptBody = out.toString("UTF-8").replace("${TOKEN}", token);
 
 //creating a new script 
-Response response = hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
-if (!response.isOK()) return response;
+Response createResp = hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), scriptBody);
+if (!createResp.isOK()) return createResp;
 
 //get scripting domain
 String domain = hivext.dev.apps.GetApp(getParam("appid")).getHosting().get("domain").toString();
-HashMap resp = new HashMap();
-resp.put("domain", domain);
-resp.put("result", 0);
-return resp;
+HashMap eventResponse = new HashMap();
+eventResponse.put("domain", domain);
+eventResponse.put("token", token);
+    
+HashMap resultResp = new HashMap();
+resultResp.put("response", eventResponse);
+resultResp.put("result", 0);
+
+return resultResp;
