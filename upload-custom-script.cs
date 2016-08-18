@@ -33,8 +33,6 @@ try {
     while ((n = cis.read(buff)) > -1) {
         out.write(buff, 0, n);
     }
-
-
 } finally {
     if (cis != null) {
         try {
@@ -54,5 +52,4 @@ try {
 }
 
 //creating a new script 
-//if (true) return getParam("scriptName") + ":" + getParam("scriptType") + ":" + out.toString("UTF-8");
 return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
