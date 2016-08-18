@@ -1,9 +1,8 @@
 //@auth
-//@required('url', 'scriptName', 'scriptType')
+//@required('url', 'scriptName', 'scriptType', 'next')
 
-    import com.hivext.api.core.utils.Transport;
-import java.util.Collection;
 import java.util.HashMap;
+import com.hivext.api.core.utils.Transport;
 import com.hivext.api.Response;
 import com.hivext.api.server.development.response.ApplicationInfoResponse;
 import com.hivext.api.utils.Random;
@@ -24,13 +23,25 @@ if (!createResp.isOK()) return createResp;
 
 //get scripting domain
 String domain = hivext.dev.apps.GetApp(getParam("appid")).getHosting().get("domain").toString();
-HashMap eventResponse = new HashMap();
-eventResponse.put("domain", domain);
-eventResponse.put("token", token);
-eventResponse.put("result", 0);
+
+//building the response
+HashMap params = new HashMap();
+params.put("domain", domain);
+params.put("token", token);
+params.put("result", 0);    
     
+HashMap call = new HashMap();
+call.put("params", params);
+call.put("procedure", getParam("next"));
+    
+HashMap afterReturn = new HashMap();
+afterReturn.put("call", call);
+    
+HashMap eventResponse = new HashMap();
+eventResponse.put("onAfterReturn", afterReturn);
+eventResponse.put("result", 0);    
+
 HashMap resultResp = new HashMap();
 resultResp.put("response", eventResponse);
-resultResp.put("result", 0);
-
+    
 return resultResp;
