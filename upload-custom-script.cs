@@ -54,5 +54,5 @@ try {
 }
 
 //creating a new script 
-if (true) return getParam("scriptName") + ":" + getParam("scriptType") + ":" + out.toString("UTF-8");
+//if (true) return getParam("scriptName") + ":" + getParam("scriptType") + ":" + out.toString("UTF-8");
 return hivext.dev.scripting.CreateScript(getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
