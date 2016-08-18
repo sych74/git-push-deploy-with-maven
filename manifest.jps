@@ -20,7 +20,10 @@
     },
     "onInstall": [
       {
-        "call" : ["upload-deploy-script", "set-redeploy-url"]
+        "call": [
+          "upload-deploy-script",
+          "set-redeploy-url"
+        ]
       }
     ],
     "procedures": [
@@ -28,25 +31,26 @@
         "id": "upload-deploy-script",
         "onCall": {
           "execScript": {
-          "type": "java",
-          "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java",
-          "params": {
-            "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.js",
-            "scriptName": "redeploy",
-            "scriptType": "js"
+            "type": "java",
+            "script": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/upload-custom-script.java",
+            "params": {
+              "url": "https://raw.githubusercontent.com/jelastic-jps/get-push-deploy-with-maven/master/redeploy.js",
+              "scriptName": "redeploy",
+              "scriptType": "js"
+            }
           }
         }
       },
       {
         "id": "set-redeploy-url",
         "onCall": {
-          "execCmd" : {
-          "nodeType" : "maven3",
-          "commands" : [
-            "echo '${event.response.token}' >> /var/log/test.log",
-            "echo 'http://${event.response.domain}/redeploy' >> /var/log/test.log"
-          ],
-          "user" : "root"
+          "execCmd": {
+            "nodeType": "maven3",
+            "commands": [
+              "echo '${event.response.token}' >> /var/log/test.log",
+              "echo 'http://${event.response.domain}/redeploy' >> /var/log/test.log"
+            ],
+            "user": "root"
           }
         }
       },
