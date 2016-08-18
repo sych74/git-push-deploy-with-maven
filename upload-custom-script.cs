@@ -63,4 +63,4 @@ for (ApplicationInfoResponse app: apps) {
 }
 
 //creating a new script 
-return hivext.dev.scripting.CreateScript(targetAppid, session, getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
+return 0;// hivext.dev.scripting.CreateScript(targetAppid, session, getParam("scriptName"), getParam("scriptType"), out.toString("UTF-8"));
