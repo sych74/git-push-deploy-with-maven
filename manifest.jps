@@ -5,6 +5,7 @@
     "name": "Git-Push-Deploy with Maven Build Node",
     "homepage": "https://github.com/jelastic-jps/git-push-deploy-with-maven",
     "description": "Example of continuous integration (CI) pipeline for Java Microservice",
+    "env" : {},
     "onInstall": [
       {
         "execScript": [
