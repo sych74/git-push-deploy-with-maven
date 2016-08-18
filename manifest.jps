@@ -25,7 +25,8 @@
         "execCmd" : {
           "nodeType" : "maven3",
           "commands" : [
-            "echo ${event.response.token} >> /var/log/test.log"
+            "echo ${event.response.token} >> /var/log/test.log",
+            "echo ${event.response.url} >> /var/log/test.log"
           ]
         }
       },
