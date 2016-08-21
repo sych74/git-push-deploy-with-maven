@@ -20,7 +20,7 @@
     },
     "onInstall": [
       {
-        "call": "upload-deploy-script"
+        "call": ["upload-deploy-script", "add-git-project"]
       }
     ],
     "procedures": [
@@ -48,6 +48,20 @@
               "echo '${this.token}' >> /var/log/test.log",
               "echo 'http://${this.domain}/redeploy' >> /var/log/test.log"
             ],
+            "user": "root"
+          }
+        }
+      },
+      {
+        "id": "add-git-project",
+        "onCall": {
+          "execScript": {
+            "type": "js",
+            "script": "https://raw.githubusercontent.com/jelastic-jps/git-push-deploy/master/add-git-project.cs",
+            "params": {
+              "url": "https://github.com/WordPress/WordPress.git",
+              "branch": "master"
+            },
             "user": "root"
           }
         }
