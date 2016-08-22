@@ -16,12 +16,11 @@ var params = {
    password: null,
    autoupdate: true,
    interval: 1,
-   autoResolveConflict: true,
-   zdt: false
+   autoResolveConflict: true
 }
 
 //create and update the project 
-resp = jelastic.env.vcs.CreateProject(params.envName, params.session, params.nodeId, params.name, params.type, params.url, params.keyId, params.login, params.password, params.env, params.context, params.branch, params.autoupdate, params.interval, params.autoResolveConflict, params.zdt);
+resp = jelastic.env.build.CreateProject(params.envName, params.session, params.nodeId, params.name, params.type, params.url, params.keyId, params.login, params.password, params.env, params.context, params.branch, params.autoupdate, params.interval, params.autoResolveConflict);
 if (resp.result != 0) return resp;
-resp = jelastic.env.vcs.Update(params.envName, params.session, params.project);
+resp = jelastic.env.build.BuildProject(params.envName, params.session, params.nodeId, resp.id);
 return resp;
