@@ -4,7 +4,7 @@
 var params = {
    name: name,
    envName: "${env.appid}",
-   env: "${env.domain}".split(".")[0],
+   env: "${env.envName}",
    nodeId: "${nodes.build.first.id}",
    session: session,
    type: "git",
