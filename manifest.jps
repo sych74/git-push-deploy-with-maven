@@ -57,9 +57,10 @@
         "onCall": {
           "execScript": {
             "type": "js",
-            "script": "https://raw.githubusercontent.com/jelastic-jps/git-push-deploy/master/add-git-project.cs",
+            "script": "https://raw.githubusercontent.com/jelastic-jps/git-push-deploy-with-maven/master/add-git-project-wo-auth.cs",
             "params": {
-              "url": "https://github.com/WordPress/WordPress.git",
+              "name": "myapp",
+              "url": "https://github.com/jelastic/HelloWorld.git",
               "branch": "master"
             },
             "user": "root"
