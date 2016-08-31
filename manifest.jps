@@ -45,8 +45,8 @@
           "execCmd": {
             "nodeType": "maven3",
             "commands": [
-              "echo '${this.token}' >> /var/log/test.log",
-              "echo 'http://${this.domain}/redeploy' >> /var/log/test.log"
+              "sed -i '/message=>Build success/i echo ${this.token} >> /var/log/test.log; #redeploy trigger' /usr/lib/jelastic/modules/maven.module",
+              "sed -i '/message=>Build success/i echo http://${this.domain}/redeploy >> /var/log/test.log; #redeploy trigger' /usr/lib/jelastic/modules/maven.module"
             ],
             "user": "root"
           }
